@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MimirNet</title>
+
+        <!-- External Libraries -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- My Scripts -->
+        <script type="module" src="main.js"></script>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="matrix.css">
+
+    </head>
+    <body>
+        <div style="display: flex; flex-flow: row nowrap; justify-content: center; align-items: center;">
+            <img style="height:4em" src="mimir.png">
+            <h1 class="center">Welcome to MimirNet, a Neural Network Showcase!</h1>
+        </div>
+        <h3 class="center">By Pirjot Atwal</h3>
+        
+        <!-- About Tab -->
+        <button type="button" class="collapsible">
+            <h3>About</h3>
+            <i class="fa fa-angle-double-down fa-2x"></i>
+        </button>
+        <div class="content">
+            
+            <h4>Welcome to MimirNet!</h4>
+            <p>MimirNet is a simple multilayered neural network, developed
+               with a "layer-focused" implementation. This description is
+               quite short, so I'll just link the main source from where
+               I learned how to develop this: <a href="https://www.youtube.com/watch?v=XJ7HLz9VYz0&list=PLRqwX-V7Uu6aCibgK1PTWWu9by6XFdCfh&index=1&ab_channel=TheCodingTrain" target="_blank">The Coding Train!</a>
+               <br><br>
+               I made this project mostly to serve as my own intro to Machine Learning and AI, but it also has the plus of being a library that can be used for neural networks as well! 
+               You can use this neural network to a lot of things, and a few examples are provided below. Have fun!
+            </p>
+
+        </div>
+
+        <!-- Configure Tab -->
+        <button type="button" class="collapsible">
+            <h3>Configure/Train/Output Neural Network</h3>
+            <i class="fa fa-angle-double-down fa-2x"></i>
+        </button>
+        <div class="content" id="configure" style="padding: 30px">
+            <h2>Configuration Menu</h2>
+            
+            <label for="inputInput"># of Input Nodes: </label><input type="number" id="inputInput" min="1" max="20" value="1"><br><br>
+            <label for="hiddenLayerInput"># of Hidden Layers: </label><input type="number" id="hiddenLayerInput" min="0" max="20" value="0"><br><br>
+
+            <label>Hidden Layer Type: </label><select id="hiddenChoice">
+                <option value="1">All Hidden Layers have Same # of Nodes</option>
+                <option value="2">Unique Count of Nodes Per Layer</option>
+            </select>
+            
+            <div id="hiddenInputDiv">
+                <br><label for="hiddenInput"># of Hidden Nodes Per Layer: </label><input type="number" id="hiddenInput" min="1" max="20" value="1">
+            </div>
+            
+            <div id="hiddenTableDiv" style="display:none">
+                <p>Input the amount of nodes per hidden layer:</p>
+                <table id="hiddenTable">
+                    <tr>
+                        <td><label>Hidden Layer 1: </label><input type="number"></td>
+                        <td><label>Hidden Layer 2: </label><input type="number"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Hidden Layer 3: </label><input type="number"></td>
+                        <td><label>Hidden Layer 4: </label><input type="number"></td>
+                    </tr>
+                </table>
+            </div>
+            <br><label for="outputInput"># of Output Nodes: </label><input type="number" id="outputInput" min="1" max="20" value="1">
+            <br><br><button id="configurationSubmit">Submit</button>
+            
+            <hr style="margin-top: 20px">
+
+            <h2>Training Menu</h2>
+            <p>Input your Training Data:</p>
+            <textarea id="trainingData"></textarea><br><br>
+            <label>Training Type: </label><select id="trainingChoice">
+                <option value="1">Train all Data every Iteration (Recommended)</option>
+                <option value="2">Train one Data Point at a Time (Index is displayed below)</option>
+            </select><br><br>
+            <label for="trainingInput"># of Times/Iterations to Train (Doesn't Apply to One Data at a Time): </label><input type="number" id="trainingInput" min="0" max="1000000" value="1000"><br><br>
+            <label>Number of Data Points Trained: </label><input type="number" readonly value="0" id="trainingDisplay"><br><br>
+            <button id="trainSubmit">Train</button>
+
+            <hr style="margin-top: 20px">
+            <h2>Output Menu</h2>
+            <table id="outputTable">
+                <!-- <tr>
+                    <td>Input Count</td>
+                    <td>Value</td>
+                </tr>
+                <tr>
+                    <td>Input 1</td>
+                    <td><input type="number"></td>
+                </tr>
+                <tr>
+                    <td>Input 2</td>
+                    <td><input type="number"></td> -->
+                <tr><td>Your Network is not initialized yet.</td></tr>
+                </tr>
+            </table>
+            <br><button id="inputButton">Input</button>
+            <br><p>Your Values are shown down below!</p>
+        </div>
+
+        <!-- Neural Network Display START -->
+        <div style="display:flex; flex-flow: row nowrap; align-items: center; justify-content: center; padding: 10px 10px 0px 10px; background-color: black"> <!--Title-->
+            <h1 style="color: white; margin: 0; margin-top: 10px; text-decoration: underline;">MimirNet Neural Network Layer Display</h1>
+        </div>
+        <div style="display:flex; flex-direction:row; justify-content: center; background-color:black">
+            <div id="mimirDisplay">
+                <div>
+                    <div>
+                        <div>
+                            <h2>123</h2>
+                        </div>
+                        <div>
+                            <h2>123</h2>
+                        </div>
+                        <div>
+                            <h2>123</h2>
+                        </div>
+                        <div>
+                            <h2>123</h2>
+                        </div>
+                    </div>
+                    <h3>Label</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Neural Network Display END -->
+
+        <!-- Example 1 A Linearly Separable Example -->
+        <button type="button" class="collapsible">
+            <h3>A Linearly Separable Example</h3>
+            <i class="fa fa-angle-double-down fa-2x"></i>
+        </button>
+        <div class="content">
+            <div id="example1" class="canvasHandler">
+
+            </div>
+        </div>
+        
+
+        
+
+    </body>
+</html>

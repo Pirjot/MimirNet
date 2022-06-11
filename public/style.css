@@ -1,0 +1,157 @@
+body {
+    background-color: #D3D3D3;
+}
+
+.center {
+    text-align: center;
+}
+
+/* MimirNet Display Div Style START */
+
+/* Div holding all the layers */
+#mimirDisplay {
+    margin: auto; 
+    height: 500px; 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    grid-gap: 50px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.Layer_Label {
+    min-height: 400px; 
+    max-height: 400px; 
+    background-color: pink;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Div holding all the circles and label for a layer */
+.Layer {
+    min-height: 300px;
+    width: 150px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    grid-gap: 30px;
+    overflow-y: auto;
+    padding: 0px;
+}
+
+/* Each value circle */
+.Value {
+    width: 100px; 
+    min-height: 100px;
+    max-height: 100px;
+    border-radius:50%; 
+    background-color: green; 
+    border: 4px solid black; 
+    display: flex; 
+    flex-direction:column; 
+    flex-wrap: nowrap; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.Value * {
+    margin: 0;
+}
+
+a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* MimirNet Display Div Style END */
+
+
+/* Tooltip START */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 2px dotted blue;
+}
+.tooltip .tooldiv {
+    opacity: 0;
+    visibility: hidden;
+    transition:opacity 300ms linear;
+    width: 300px;
+    height: 200px;
+    overflow: auto;
+    background-color: lightsalmon;
+    color: black;
+    text-align: center;
+    border-radius: 4px;
+    padding: 8px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 4;
+    bottom: 120%;
+    left: 50%;
+}
+
+/* Tooltip END */
+
+
+/* Collapsible START */
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+/* Collapsible END */
+
+
+/* Canvas Handler START */
+
+.canvasHandler {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    padding: 30px;
+    grid-gap: 50px;
+}
+
+.canvasDisplay {
+    width: 400px;
+    height: 400px;
+    background-color: gray;
+
+    padding: 30px;
+}
+
+/* Canvas Handler END */

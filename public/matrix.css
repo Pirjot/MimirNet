@@ -1,0 +1,60 @@
+/**
+    Styling for the square borders that appear
+    around divs. Apply the left/right-matrix-border
+    classes to divs that hold each other inside and
+    then have a table in the inner div to hold the 
+    matrix contents.
+
+    @file matrix.css
+    @author Pirjot Atwal
+*/
+
+.left-matrix-border {
+    position: relative;
+    display: inline-block;
+    border-left: 1px solid lightcoral;
+    padding-left: 10px;
+}
+
+.left-matrix-border:before {
+    content: '';
+    border-bottom: 1px solid lightcoral;
+    position: absolute;
+    width: 10px;
+    left: 0%;
+    bottom: 0;
+}
+
+.left-matrix-border:after {
+    content: '';
+    border-bottom: 1px solid lightcoral;
+    position: absolute;
+    width: 10px;
+    left: 0%;
+    top: 0;
+}
+
+.right-matrix-border {
+    position: relative;
+    display: inline-block;
+    border-right: 1px solid lightcoral;
+    padding-right: 10px;
+}
+
+.right-matrix-border:before {
+    content: '';
+    border-bottom: 1px solid lightcoral;
+    position: absolute;
+    width: 10px;
+    right: 0%;
+    bottom: 0;
+}
+
+.right-matrix-border:after {
+    content: '';
+    border-bottom: 1px solid lightcoral;
+    position: absolute;
+    width: 10px;
+    right: 0%;
+    top: 0;
+}
