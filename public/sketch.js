@@ -196,7 +196,7 @@ class CanvasHandler {
             this.setButtonBackgrounds();
         });
         this.setupButton.addEventListener("click", (evt) => {
-            this.mimir = new MimirNet(2, 1, []);
+            this.mimir = new MimirNet(2, 1, [], .01);
             alert("Your Neural Network has been set to use 2 input nodes, 1 output node, and 0 hidden layers!");
         });
         let success = false;
@@ -261,9 +261,8 @@ class CanvasHandler {
         });
         this.quickTrainButton.addEventListener("click", (evt) => {
             this.trainButton.click();
-            for (let j = 0; j < 1000; j++) {
+            for (let j = 0; j < 5000; j++) {
                 if (success != false) {
-                    shuffleArray(this.points);
                     this.trainButton.click();
                 }
             }

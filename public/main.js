@@ -8,6 +8,7 @@
 import MimirNet from "./MimirNet.js";
 import displayMimir from "./displayMimir.js";
 import readySketch from "./sketch.js";
+import readyPalindrome from "./palindrome.js";
 
 let mimir = null;
 
@@ -261,7 +262,8 @@ document.addEventListener("DOMContentLoaded", (evt) => {
     prepareInputs();
     // Ready p5 sketches
     readySketch();
-
+    // Palindrome Example
+    // readyPalindrome();
     console.log("Ready to Go!");
 });
 
