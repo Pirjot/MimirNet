@@ -221,7 +221,6 @@ function setupMimir(inputNodes, hiddenLayerCount, hiddenLayerChoice, hiddenValue
         tr.append(title, td);
         table.append(tr);
     }
-
     displayMimir(mimir);
 }
 
@@ -266,5 +265,5 @@ document.addEventListener("DOMContentLoaded", (evt) => {
     console.log("Ready to Go!");
 });
 
-// TODO DEBUG VARIABLES
-self.mimir = mimir;
+// Set displayMimir accessible to all other scripts
+self.displayMimir = displayMimir;

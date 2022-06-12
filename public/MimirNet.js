@@ -29,6 +29,7 @@ class MimirNet {
      * @param {Number} numOfHidden The number of inbetween hidden layers
      * @param {Number} numOfOutputs The number of outputs in the output layer
      * @param {Number} hiddenNodeAmount The amount of nodes (neurons) in each hidden layer
+     * @param {Number} learningRate
      */
     static createMimir(numOfInputs, numOfHidden, numOfOutputs, hiddenNodeAmount, learningRate = .5) {
         let hiddenLayout = [];
@@ -80,8 +81,7 @@ class MimirNet {
      */
     output(input) {
         if (input.length != this.numOfInputs) {
-            console.error("The amount of inputs should match the number required: ", this.numOfInputs);
-            return;
+            throw "The amount of inputs should match the number required: " + this.numOfInputs;
         }
 
         // Convert input to a Matrix
@@ -100,6 +100,10 @@ class MimirNet {
      * @param {target[]} target
      */
     train(input, target) {
+        if (input.length != this.numOfInputs || target.length != this.numOfOutputs) {
+            throw "Input and Output Lengths are not correct";
+        }
+
         // Set the inputs and outputs of all layers
         this.output(input);
 
