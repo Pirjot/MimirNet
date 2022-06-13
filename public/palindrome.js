@@ -64,7 +64,7 @@ async function readyPalindrome() {
         data[i] = [converted, data[i][1]];
     }    
 
-    let mimir = new MimirNet(4, 1, [10, 10, 10, 10, 10]);
+    let mimir = new MimirNet(4, 1, [10, 10, 10, 10, 10], .1);
 
     for (let i = 0; i < 100; i++) {
         shuffleArray(data);

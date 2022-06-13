@@ -50,6 +50,20 @@ function quickCreate(tagName, tags=null, text=null) {
     return element;
 }
 
+function shuffleArray(array) {
+    let currentIndex = array.length,  randomIndex;
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+    return array;
+}
+
 /**
  * TODO
  */
@@ -204,9 +218,9 @@ function prepareInputs() {
  */
 function setupMimir(inputNodes, hiddenLayerCount, hiddenLayerChoice, hiddenValues, hiddenNodes, outputNodes) {
     if (hiddenLayerChoice == 1) { 
-        mimir = MimirNet.createMimir(inputNodes, hiddenLayerCount, outputNodes, hiddenNodes);
+        mimir = MimirNet.createMimir(inputNodes, hiddenLayerCount, outputNodes, hiddenNodes, .00001);
     } else {
-        mimir = new MimirNet(inputNodes, outputNodes, hiddenValues);
+        mimir = new MimirNet(inputNodes, outputNodes, hiddenValues, .00001);
     }
 
     // Set the output menu
@@ -236,6 +250,7 @@ function trainMimir(training_data, trainingType, trainingAmount) {
     // TODO RANDOMIZE COUNT (CHANGE ON PAGE MESSAGE TO NOTE THIS)
     if (trainingType == 1) { // Train All Data
         for (let i = 0; i < trainingAmount; i++) {
+            shuffleArray(training_data);
             for (let data of training_data) {
                 // TODO ERROR CATCHING
                 mimir.train(data[0], data[1]);
@@ -245,7 +260,8 @@ function trainMimir(training_data, trainingType, trainingAmount) {
     } else { // Train one at a time
         document.getElementById("trainingDisplay").value = trainingIndex;
         // TODO ERROR CATCHING
-        mimir.train(training_data[trainingIndex % training_data.length][0], training_data[trainingIndex % training_data.length][1]);
+        shuffleArray(training_data);
+        mimir.train(training_data[0][0], training_data[0][1]);
         trainingIndex++;
     }
     // Display the trainingIndex
@@ -264,6 +280,7 @@ document.addEventListener("DOMContentLoaded", (evt) => {
     readySketch();
     // Palindrome Example
     // readyPalindrome();
+
     console.log("Ready to Go!");
 });
 

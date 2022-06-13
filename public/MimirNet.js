@@ -12,10 +12,12 @@ import Matrix from "./Matrix.js";
 
 function sigmoid(x) {
     return 1 / (1 + Math.exp(-x));
+    // return Math.tanh(x);
 }
 
 function dsigmoid(x) {
     return x * (1 - x);
+    // return 1 - Math.pow(x, 2);
 }
 
 class MimirNet {
@@ -112,7 +114,13 @@ class MimirNet {
         
         // Calculate Error
         let error = Matrix.combine(target, this.layers[this.layers.length - 1].outputVector, (x, y) => x - y);
-
+        // DEBUG
+        let mean = 0;
+        for (let err of error.toSArray()) {
+            mean += err;
+        }
+        mean /= error.toSArray().length;
+        console.log("MEAN ERROR OUTPUT LAYER: " + mean);
         // Identity Matrix to start for hidden error calculation
         let nextLayerMatrix = Matrix.identity(this.numOfOutputs);
 
